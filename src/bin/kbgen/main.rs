@@ -11,6 +11,6 @@ fn main() {
     let mut hbs = Handlebars::new();
     match app.cmd {
         Command::Article(article) => article.generate(&app.destination, &mut hbs),
-        Command::Note(note) => {}
+        Command::Note(note) => note.generate(&app.destination, &mut hbs),
     }
 }
