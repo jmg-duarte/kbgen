@@ -1,8 +1,8 @@
+use super::error::KBGenError;
 use super::Generateable;
 
 use std::fs;
 use std::path;
-
 
 use clap::Clap;
 use handlebars::Handlebars;
@@ -20,17 +20,16 @@ pub struct Note {
 }
 
 impl Generateable for Note {
-    fn generate(&self, destination: &str, hbs: &mut Handlebars) {
-        println!("{:?}", self);
-        self.setup(hbs);
-        hbs.register_template_string(TEMPLATE_NAME, TEMPLATE)
-            .unwrap();
+    fn generate(&self, destination: &str, hbs: &mut Handlebars) -> Result<(), KBGenError> {
+        self.setup(hbs)?;
+        hbs.register_template_string(TEMPLATE_NAME, TEMPLATE)?;
         let path = path::Path::new(&destination);
         if path.exists() {
-            return;
+            return Err(KBGenError::FileExists(destination.to_string()));
         }
 
-        let render_output = hbs.render(TEMPLATE_NAME, self).unwrap();
-        fs::write(path, render_output);
+        let render_output = hbs.render(TEMPLATE_NAME, self)?;
+        fs::write(path, render_output)?;
+        Ok(())
     }
 }
