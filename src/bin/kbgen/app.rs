@@ -6,6 +6,8 @@ const AUTHORS: &'static str = env!("CARGO_PKG_AUTHORS");
 #[derive(Clap)]
 #[clap(version=VERSION, author=AUTHORS)]
 pub struct App {
+    /// The file destination
+    destination: String,
     #[clap(subcommand)]
     cmd: Command,
 }
