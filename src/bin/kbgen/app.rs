@@ -1,5 +1,8 @@
 use clap::Clap;
 
+use kbgen::article::Article;
+use kbgen::note::Note;
+
 const VERSION: &'static str = env!("CARGO_PKG_VERSION");
 const AUTHORS: &'static str = env!("CARGO_PKG_AUTHORS");
 
@@ -7,31 +10,15 @@ const AUTHORS: &'static str = env!("CARGO_PKG_AUTHORS");
 #[clap(version=VERSION, author=AUTHORS)]
 pub struct App {
     /// The file destination
-    destination: String,
+    pub destination: String,
     #[clap(subcommand)]
-    cmd: Command,
+    pub cmd: Command,
 }
 
 #[derive(Clap)]
-enum Command {
+pub enum Command {
     #[clap(version=VERSION, author=AUTHORS)]
     Article(Article),
     #[clap(version=VERSION, author=AUTHORS)]
     Note(Note),
-}
-
-/// Create a new article
-#[derive(Clap)]
-struct Article {
-    /// The article title
-    title: String,
-    /// The article DOI, the link is later generated
-    doi: String,
-}
-
-/// Create a new note
-#[derive(Clap)]
-struct Note {
-    /// The note title
-    title: String
 }
