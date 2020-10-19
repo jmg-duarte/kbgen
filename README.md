@@ -33,4 +33,13 @@ As of now, the file is a simple H1 header.
 
 ## Help
 
-For help you can either run `kbgen` without any arguments or `kbgen -h`.
+To print the help text you can either run `kbgen` without any arguments or `kbgen -h`.
+
+## Installation
+
+Currently, the only way to install `kbgen` is by running the following command:
+
+```
+cargo install --git https://github.com/jmg-duarte/kbgen --branch main
+```
+
