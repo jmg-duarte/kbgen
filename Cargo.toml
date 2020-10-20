@@ -1,5 +1,6 @@
 [package]
 name = "kbgen"
+description = "kbgen is a tool to generate Foam knowledge base documents"
 version = "0.1.1"
 authors = ["José Duarte <jmg.duarte@campus.fct.unl.pt>"]
 edition = "2018"
