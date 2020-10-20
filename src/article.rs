@@ -14,6 +14,7 @@ const TEMPLATE: &str = "{{> title }}
 ---
 
 **Authors** - {{authors}}
+
 **DOI** - [{{doi}}](https://doi.org/{{doi}})
 
 ---
