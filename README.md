@@ -40,6 +40,6 @@ To print the help text you can either run `kbgen` without any arguments or `kbge
 Currently, the only way to install `kbgen` is by running the following command:
 
 ```
-cargo install --git https://github.com/jmg-duarte/kbgen --branch main
+cargo install kbgen
 ```
 
