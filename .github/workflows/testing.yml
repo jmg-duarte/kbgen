@@ -1,4 +1,4 @@
-name: testing
+name:
 
 on:
   push:
@@ -11,12 +11,18 @@ env:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Build
       run: cargo build --verbose
+  test:
+    needs: build
+    runs-on: ubuntu-latest
     - name: Run tests
       run: cargo test --verbose
+  # release:
+  #   needs: test
+  #   runs-on: ubuntu-latest
+  #   - name: Build in Release Mode
+  #     run: cargo build --release
